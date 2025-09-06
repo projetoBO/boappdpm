@@ -570,9 +570,9 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       </li>
       <li class="form-line" data-type="control_button" id="id_59">
         <div id="cid_59" class="form-input-wide" data-layout="full">
-          <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_preview_59" type="button" class="form-submit-preview jf-form-buttons form-submit-button-reports-400" data-component="button"><img alt="" src="https://cdn.jotfor.ms/assets/img/theme-assets/5ca4930530899c64ff77cfa1/previewPDF-icon.svg" /><span id="span_preview_59" class="span_preview">Baixar PDF</span></button><span> </span><button id="input_59" type="submit" class="form-submit-button form-submit-button-reports-400 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Enviar</button></div>
-          <div class="form-submit-clear-wrapper"><button id="input_reset_59" type="reset" class="form-submit-reset form-submit-button-reports-400 jf-form-buttons" data-component="button">Limpar</button></div>
-        </div>
+  <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_preview_59" type="button" class="form-submit-preview jf-form-buttons form-submit-button-reports-400" data-component="button"><img alt="" src="https://cdn.jotfor.ms/assets/img/theme-assets/5ca4930530899c64ff77cfa1/previewPDF-icon.svg" /><span id="span_preview_59" class="span_preview">Baixar PDF</span></button><span> </span><button id="input_59" type="submit" class="form-submit-button form-submit-button-reports-400 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Enviar</button></div>
+  <div class="form-submit-clear-wrapper"><button id="input_reset_59" type="reset" class="form-submit-reset form-submit-button-reports-400 jf-form-buttons" data-component="button">Limpar</button></div>
+</div>
       </li>
       <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
     </ul>
@@ -591,6 +591,84 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     }
   </script>
 </form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>
+<script type="text/javascript">
+  // Função para formatar o texto e enviar via WhatsApp
+  function enviarViaWhatsApp() {
+    // Coleta dos dados do formulário
+    const bo_n = document.getElementById('input_3').value;
+    const data_ocorrencia = document.getElementById('lite_mode_67').value;
+    const hora_fato = document.getElementById('input_55_timeInput').value;
+    const local = document.getElementById('input_5').value;
+    const bairro = document.getElementById('input_8').value;
+    const ponto_ref = document.getElementById('input_9').value;
+    const material_apreendido = document.getElementById('input_46').value;
+    const relatorio = document.getElementById('input_47').value;
 
+    // Estrutura base da mensagem
+    let mensagem = `POLÍCIA MILITAR DO MARANHÃO\n`;
+    mensagem += `CPI / CPAI-5 / 10º BPM\n\n`;
+    mensagem += `TÍTULO DA OCORRÊNCIA:\n\n`;
+    mensagem += `*BO №:* ${bo_n}\n`;
+    mensagem += `*Data:* ${data_ocorrencia}\n`;
+    mensagem += `*Hora:* ${hora_fato}\n`;
+    mensagem += `*Local:* ${local}, ${bairro} - ${ponto_ref}\n`;
+    mensagem += `*Localização:*\n\n`;
+    mensagem += `*Procedimentos adotados:*\n\n`;
+
+    // Função para adicionar envolvidos se os campos estiverem preenchidos
+    function adicionarEnvolvido(num, nome_id, cpf_id, endereco_id) {
+      const nome = document.getElementById(nome_id).value;
+      const cpf = document.getElementById(cpf_id).value;
+      const residencia = document.getElementById(endereco_id).value;
+
+      let tipoEnvolvimento = "";
+      let checkboxes;
+
+      if (num === 1) checkboxes = document.querySelectorAll('input[name="q81_typeA[]"]:checked');
+      if (num === 2) checkboxes = document.querySelectorAll('input[name="q83_envolvimento83[]"]:checked');
+      if (num === 3) checkboxes = document.querySelectorAll('input[name="q84_envolvimento[]"]:checked');
+      if (num === 4) checkboxes = document.querySelectorAll('input[name="q85_envolvimento85[]"]:checked');
+
+      if(checkboxes && checkboxes.length > 0) {
+          tipoEnvolvimento = checkboxes[0].value;
+      }
+
+      if (nome) {
+        let textoEnvolvido = "";
+        if (tipoEnvolvimento === "Vítima") {
+          textoEnvolvido += `*Vitima ${num}:* ${nome}\n`;
+        } else if (tipoEnvolvimento === "Conduzido" || tipoEnvolvimento === "Proprietário") {
+          textoEnvolvido += `*Suspeito ${num}:* ${nome}\n`;
+        } else {
+          textoEnvolvido += `*Envolvido ${num} (${tipoEnvolvimento}):* ${nome}\n`;
+        }
+        textoEnvolvido += `*CPF:* ${cpf}\n`;
+        textoEnvolvido += `*Endereço:* ${residencia}\n\n`;
+        return textoEnvolvido;
+      }
+      return "";
+    }
+
+    // Adiciona os envolvidos na mensagem
+    mensagem += adicionarEnvolvido(1, 'input_11', 'input_17', 'input_13');
+    mensagem += adicionarEnvolvido(2, 'input_20', 'input_26', 'input_22');
+    mensagem += adicionarEnvolvido(3, 'input_29', 'input_35', 'input_31');
+    mensagem += adicionarEnvolvido(4, 'input_38', 'input_44', 'input_40');
+
+    // Adiciona material apreendido e relatório
+    mensagem += `*Material Apreendido/apresentado:*\n${material_apreendido}\n\n`;
+    mensagem += `*Relatório:*\n${relatorio}\n`;
+
+    // Formata a mensagem para URL e abre o WhatsApp
+    const numero = "+5591998192610";
+    const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensagem)}`;
+    window.open(urlWhatsApp, '_blank');
+  }
+
+  // Adiciona o "ouvinte" de evento ao botão
+  document.getElementById('enviar_whatsapp').addEventListener('click', enviarViaWhatsApp);
+</script>
+</body>
+</html>
 </body>
 </html>
