@@ -305,6 +305,11 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     
       }
     /* Injected CSS Code */
+
+ /* Código para remover o rodapé da Jotform */
+[class*="branding-footer"] {
+    display: none !important;
+}
 </style>
 
 <form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/252474593439064" method="post" name="form_252474593439064" id="252474593439064" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="252474593439064" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1757126700516" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="submitDate" name="submitDate" value="undefined" /><input type="hidden" id="buildDate" name="buildDate" value="1757126700516" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
