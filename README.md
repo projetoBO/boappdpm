@@ -570,7 +570,30 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       </li>
       <li class="form-line" data-type="control_button" id="id_59">
         <div id="cid_59" class="form-input-wide" data-layout="full">
-          <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><span> </span><button id="input_59" type="submit" class="form-submit-button form-submit-button-reports-400 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Baixar PDF</button></div>
+          <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><span> </span><button id="input_59" type="submit" class="form-submit-button form-submit-button-reports-400 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Baixar PDF</button><button id="send-whatsapp" type="button" style="
+    background-image: linear-gradient(to right, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;"
+    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 12px rgba(0,0,0,0.2)';"
+    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';">
+
+    <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+        <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+    </svg>
+
+    Enviar Release
+</button></div>
           <div class="form-submit-clear-wrapper"><button id="input_reset_59" type="reset" class="form-submit-reset form-submit-button-reports-400 jf-form-buttons" data-component="button">Limpar</button></div>
         </div>
       </li>
@@ -591,6 +614,83 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     }
   </script>
 </form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>
+<script>
+    // Função para ser chamada quando o botão for clicado
+    function sendToWhatsApp() {
+        // Número de telefone para o qual a mensagem será enviada
+        const phoneNumber = '5591998192610';
 
+        // Funções auxiliares para obter os valores dos campos do formulário
+        const getValue = (id) => document.getElementById(id)?.value.trim() || '';
+        const getCheckedValues = (name) => Array.from(document.querySelectorAll(`input[name="${name}"]:checked`)).map(cb => cb.value).join(', ');
+
+        // Coleta dos dados gerais da ocorrência
+        const bo_n = getValue('input_3');
+        const data = getValue('lite_mode_67');
+        const hora = getValue('input_55_timeInput');
+        const local = getValue('input_5');
+
+        // Estrutura para facilitar a coleta dos dados de cada envolvido
+        let envolvidosTexto = '';
+        const envolvidosMap = [
+            { nome: '11', nasc: 'lite_mode_nasc_1', envolvimento: 'envolvimento_1', doc: '17', resid: '13', num: 'num_1', cidade: 'cidade_1', bairro: 'bairro_1', profissao: 'profissao_1' },
+            { nome: '20', nasc: 'lite_mode_nasc_2', envolvimento: 'envolvimento_2', doc: '26', resid: '22', num: 'num_2', cidade: 'cidade_2', bairro: 'bairro_2', profissao: 'profissao_2' },
+            { nome: '29', nasc: 'lite_mode_nasc_3', envolvimento: 'envolvimento_3', doc: '35', resid: '31', num: 'num_3', cidade: 'cidade_3', bairro: 'bairro_3', profissao: 'profissao_3' },
+            { nome: '38', nasc: 'lite_mode_nasc_4', envolvimento: 'envolvimento_4', doc: '44', resid: '40', num: 'num_4', cidade: 'cidade_4', bairro: 'bairro_4', profissao: 'profissao_4' }
+        ];
+
+        let vitimasCount = 0;
+        let suspeitosCount = 0;
+
+        // Itera sobre cada possível envolvido para formatar o texto
+        envolvidosMap.forEach((p, index) => {
+            const nome = getValue(`input_${p.nome}`);
+            if (nome) {
+                const envolvimento = getCheckedValues(`q_${p.envolvimento}[]`);
+                let tipoLabel = '';
+
+                if (envolvimento.includes('Vítima')) {
+                    vitimasCount++;
+                    tipoLabel = `*Vítima ${vitimasCount}:*`;
+                } else if (envolvimento.includes('Conduzido')) {
+                    suspeitosCount++;
+                    tipoLabel = `*Suspeito ${suspeitosCount}:*`;
+                } else {
+                    tipoLabel = `*${envolvimento || 'Envolvido'}:*`;
+                }
+
+                const enderecoCompleto = [
+                    getValue(`input_${p.resid}`),
+                    getValue(`input_num_${index + 1}`),
+                    getValue(`input_bairro_${index + 1}`),
+                    getValue(`input_cidade_${index + 1}`)
+                ].filter(Boolean).join(', ');
+
+                envolvidosTexto += `${tipoLabel} ${nome}\n`;
+                envolvidosTexto += `*CPF/DOC:* ${getValue(`input_${p.doc}`) || ''}\n`;
+                envolvidosTexto += `*Endereço:* ${enderecoCompleto || ''}\n\n`;
+            }
+        });
+
+        // Coleta dos campos de texto maiores
+        const material = getValue('input_46');
+        const relatorio = getValue('input_47');
+
+        // Montagem do texto final da mensagem
+        const template = `POLÍCIA MILITAR DO MARANHÃO
+		        // Codifica a mensagem para URL e abre o WhatsApp
+        const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(template)}`;
+        window.open(url, '_blank');
+    }
+    
+    // Adiciona o evento de clique ao botão, ligando o botão à função
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const whatsappButton = document.getElementById('send-whatsapp');
+        if (whatsappButton) {
+            whatsappButton.addEventListener('click', sendToWhatsApp);
+        }
+    });
+</script>
+```
 </body>
 </html>
