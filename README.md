@@ -592,9 +592,11 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
   <div class="form-submit-clear-wrapper">
     <button id="input_reset_59" type="reset" class="form-submit-reset form-submit-button-reports-400 jf-form-buttons" data-component="button">
       Limpar
+		<div class="minha-div">
+  <a href="https://projetobo.github.io/boappdpm/">Clique aqui para desbloquear os Botões</a>
+</div>
     </button>
   </div>
-</div>
         </div>
       </li>
       <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
