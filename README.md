@@ -1,5 +1,3 @@
-[index.html](https://github.com/user-attachments/files/22184142/index.html)
-<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -7,8 +5,6 @@
     <title>Meu Formulário</title>
 </head>
 <body>
-
-    <h1>Preencha o formulário abaixo</h1>
 <script>window.enableEventObserver=true</script>
 <script src="https://cdn.jotfor.ms/s/static/9bf0bf2ddf8/static/prototype.forms.js" type="text/javascript"></script>
 <script src="https://cdn.jotfor.ms/s/static/9bf0bf2ddf8/static/jotform.forms.js" type="text/javascript"></script>
@@ -595,7 +591,6 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     }
   </script>
 </form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>
-    <script type="text/javascript" src="https://form.jotform.com/jsform/252474593439064"></script>
 
 </body>
 </html>
