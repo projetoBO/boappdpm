@@ -570,9 +570,25 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       </li>
       <li class="form-line" data-type="control_button" id="id_59">
         <div id="cid_59" class="form-input-wide" data-layout="full">
-  <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_preview_59" type="button" class="form-submit-preview jf-form-buttons form-submit-button-reports-400" data-component="button"><img alt="" src="https://cdn.jotfor.ms/assets/img/theme-assets/5ca4930530899c64ff77cfa1/previewPDF-icon.svg" /><span id="span_preview_59" class="span_preview">Baixar PDF</span></button><span> </span><button id="input_59" type="submit" class="form-submit-button form-submit-button-reports-400 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Enviar</button></div>
-  <div class="form-submit-clear-wrapper"><button id="input_reset_59" type="reset" class="form-submit-reset form-submit-button-reports-400 jf-form-buttons" data-component="button">Limpar</button></div>
-</div>
+  <div data-align="auto" class="form-buttons-wrapper form-buttons-auto jsTest-button-wrapperField">
+
+    <button id="input_59" type="submit" class="form-submit-button form-submit-button-reports-400 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">
+      Baixar PDF
+    </button>
+
+    <span>&nbsp;</span>
+
+    <button id="enviar_whatsapp" type="button" class="form-submit-button form-submit-button-reports-400" style="background-color: #25D366; border-color: #25D366;">
+      Enviar pelo WhatsApp
+    </button>
+
+  </div>
+  <div class="form-submit-clear-wrapper">
+    <button id="input_reset_59" type="reset" class="form-submit-reset form-submit-button-reports-400 jf-form-buttons" data-component="button">
+      Limpar
+    </button>
+  </div>
+        </div>
       </li>
       <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
     </ul>
@@ -668,7 +684,6 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
   // Adiciona o "ouvinte" de evento ao botão
   document.getElementById('enviar_whatsapp').addEventListener('click', enviarViaWhatsApp);
 </script>
-</body>
-</html>
+
 </body>
 </html>
