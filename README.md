@@ -582,12 +582,19 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       Enviar pelo WhatsApp
     </button>
 
+    <span>&nbsp;</span>
+
+    <button id="botao_atualizar" type="button" class="form-submit-button form-submit-button-reports-400 jf-form-buttons" style="background-color: #007BFF; border-color: #007BFF;">
+      Atualizar
+    </button>
+
   </div>
   <div class="form-submit-clear-wrapper">
     <button id="input_reset_59" type="reset" class="form-submit-reset form-submit-button-reports-400 jf-form-buttons" data-component="button">
       Limpar
     </button>
   </div>
+</div>
         </div>
       </li>
       <li style="display:none">Should be Empty: <input type="text" name="website" value="" type="hidden" /></li>
@@ -621,13 +628,12 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     const relatorio = document.getElementById('input_47').value;
 
     // Estrutura base da mensagem
-    let mensagem = `POLÍCIA MILITAR DO MARANHÃO\n`;
-    mensagem += `CPI / CPAI-5 / 10º BPM\n\n`;
-    mensagem += `TÍTULO DA OCORRÊNCIA:\n\n`;
+    let mensagem = `*POLÍCIA MILITAR DO MARANHÃO*\n`;
+    mensagem += `*CPI / CPAI-5 / 10º BPM*\n\n`;
+    mensagem += `*TÍTULO DA OCORRÊNCIA:*\n\n`;
     mensagem += `*BO №:* ${bo_n}\n`;
     mensagem += `*Data:* ${data_ocorrencia}\n`;
     mensagem += `*Hora:* ${hora_fato}\n`;
-    // Combina os campos de endereço em uma única linha, se existirem
     const localCompleto = [local, bairro, ponto_ref].filter(Boolean).join(', ');
     mensagem += `*Local:* ${localCompleto}\n`;
     mensagem += `*Localização:*\n\n`;
@@ -638,7 +644,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     // Função interna para processar cada envolvido
     function adicionarEnvolvido(num, nome_id, cpf_id, endereco_id) {
         const nome = document.getElementById(nome_id).value;
-        if (!nome) return ""; // Retorna vazio se não houver nome
+        if (!nome) return ""; 
 
         const cpf = document.getElementById(cpf_id).value;
         const residencia = document.getElementById(endereco_id).value;
@@ -646,7 +652,6 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
         let tipoEnvolvimento = "";
         let checkboxes;
 
-        // Identifica o grupo de checkboxes correto para cada envolvido
         if (num === 1) checkboxes = document.querySelectorAll('input[name="q81_typeA[]"]:checked');
         if (num === 2) checkboxes = document.querySelectorAll('input[name="q83_envolvimento83[]"]:checked');
         if (num === 3) checkboxes = document.querySelectorAll('input[name="q84_envolvimento[]"]:checked');
@@ -655,40 +660,42 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
         if (checkboxes && checkboxes.length > 0) {
             tipoEnvolvimento = checkboxes[0].value;
         } else {
-            return ""; // Retorna vazio se nenhum envolvimento for selecionado
+            return "";
         }
 
-        // Lista de envolvimentos que devem ser incluídos na mensagem
         const validos = ["Vítima", "Conduzido", "Proprietário", "Outros"];
 
-        // Se o envolvimento for um dos válidos, formata e retorna o texto
         if (validos.includes(tipoEnvolvimento)) {
-            // Formata o texto sem numeração
             return `*${tipoEnvolvimento.toUpperCase()}:*\nNome: ${nome}\nCPF: ${cpf}\nEndereço: ${residencia}\n\n`;
         }
 
-        return ""; // Retorna vazio para os tipos não selecionados (ex: Testemunha)
+        return "";
     }
 
-    // Adiciona o texto de cada envolvido válido à variável
     envolvidos_texto += adicionarEnvolvido(1, 'input_11', 'input_17', 'input_13');
     envolvidos_texto += adicionarEnvolvido(2, 'input_20', 'input_26', 'input_22');
     envolvidos_texto += adicionarEnvolvido(3, 'input_29', 'input_35', 'input_31');
     envolvidos_texto += adicionarEnvolvido(4, 'input_38', 'input_44', 'input_40');
 
-    // Adiciona os envolvidos e o restante das informações
     mensagem += envolvidos_texto;
     mensagem += `*Material Apreendido/apresentado:*\n${material_apreendido}\n\n`;
-    mensagem += `*Relatório:*\n${relatorio}\n`;
+    mensagem += `*Relatório:*\n${relatorio}\n\n`;
+    mensagem += `*Guarnição:*`
 
-    // Codifica a mensagem para URL e abre o WhatsApp
-    const numero = "+5591998192610";
+    const numero = "+5598985342874";
     const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensagem)}`;
     window.open(urlWhatsApp, '_blank');
   }
 
-  // Conecta a função ao evento de clique do botão
+  // Conecta a função ao botão do WhatsApp
   document.getElementById('enviar_whatsapp').addEventListener('click', enviarViaWhatsApp);
+
+  // --- NOVO CÓDIGO ADICIONADO ---
+  // Adiciona a função de atualizar (F5) ao novo botão
+  document.getElementById('botao_atualizar').addEventListener('click', function() {
+      location.reload();
+  });
+  // -----------------------------
 </script>
 
 </body>
