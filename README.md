@@ -584,7 +584,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     <span>&nbsp;</span>
 
     <button id="enviar_whatsapp" type="button" class="form-submit-button form-submit-button-reports-400 jf-form-buttons" style="background-color: #25D366; border-color: #25D366;">
-      Enviar pelo WhatsApp
+      Enviar Release - WhatsApp
     </button>
 
     <span>&nbsp;</span>
