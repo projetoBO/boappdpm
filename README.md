@@ -1,3 +1,14 @@
+[index.html](https://github.com/user-attachments/files/22184142/index.html)
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Formulário</title>
+</head>
+<body>
+
+    <h1>Preencha o formulário abaixo</h1>
 <script>window.enableEventObserver=true</script>
 <script src="https://cdn.jotfor.ms/s/static/9bf0bf2ddf8/static/prototype.forms.js" type="text/javascript"></script>
 <script src="https://cdn.jotfor.ms/s/static/9bf0bf2ddf8/static/jotform.forms.js" type="text/javascript"></script>
@@ -182,7 +193,6 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/stylebuilder/static/form-common.css?v=4794b7e
 "/>
 <style type="text/css">@media print{*{-webkit-print-color-adjust: exact !important;color-adjust: exact !important;}.form-section{display:inline!important}.form-pagebreak{display:none!important}.form-section-closed{height:auto!important}.page-section{position:initial!important}}</style>
-<link id="custom-font" type="text/css" rel="stylesheet" href="//cdn.jotfor.ms/fonts/?family=Inter" />
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/defaultV2.css?v=4794b7e
 "/>
 <link type="text/css" rel="stylesheet" href="https://cdn.jotfor.ms/themes/CSS/548b1325700cc48d318b4567.css?v=3.3.65295&themeRevisionID=64ff099762313412041c01ae"/>
@@ -192,10 +202,17 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     /* Injected CSS Code */
 /*PREFERENCES STYLE*/
     .form-all {
-      font-family: Inter, sans-serif;
+      font-family: Times New Roman, sans-serif;
     }
   
-    
+    .form-label.form-label-auto {
+      
+    display: block;
+    float: none;
+    text-align: left;
+    width: 100%;
+  
+    }
   
     .form-line {
       margin-top: 12px;
@@ -294,7 +311,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     /* Injected CSS Code */
 </style>
 
-<form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/252474593439064" method="post" name="form_252474593439064" id="252474593439064" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="252474593439064" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1757111408318" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="submitDate" name="submitDate" value="undefined" /><input type="hidden" id="buildDate" name="buildDate" value="1757111408318" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
+<form class="jotform-form" onsubmit="return typeof testSubmitFunction !== 'undefined' && testSubmitFunction();" action="https://submit.jotform.com/submit/252474593439064" method="post" name="form_252474593439064" id="252474593439064" accept-charset="utf-8" autocomplete="on"><input type="hidden" name="formID" value="252474593439064" /><input type="hidden" id="JWTContainer" value="" /><input type="hidden" id="cardinalOrderNumber" value="" /><input type="hidden" id="jsExecutionTracker" name="jsExecutionTracker" value="build-date-1757126700516" /><input type="hidden" id="submitSource" name="submitSource" value="unknown" /><input type="hidden" id="submitDate" name="submitDate" value="undefined" /><input type="hidden" id="buildDate" name="buildDate" value="1757126700516" /><input type="hidden" name="uploadServerUrl" value="https://upload.jotform.com/upload" /><input type="hidden" name="eventObserver" value="1" />
   <div role="main" class="form-all">
     <ul class="form-section page-section" role="presentation">
       <li id="cid_1" class="form-input-wide" data-type="control_head">
@@ -333,7 +350,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       <li class="form-line" data-type="control_datetime" id="id_67"><label class="form-label form-label-top form-label-auto" id="label_67" for="lite_mode_67" aria-hidden="false"> DATA DA OCORRÊNCIA </label>
         <div id="cid_67" class="form-input-wide" data-layout="half">
           <div data-wrapper-react="true">
-            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_67" name="q67_dataDa[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_67 sublabel_67_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_67" id="sublabel_67_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_67" name="q67_dataDa[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_67 sublabel_67_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_67" id="sublabel_67_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_67" name="q67_dataDa[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_67 sublabel_67_year" value="" /><label class="form-sub-label" for="year_67" id="sublabel_67_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_67" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_67 sublabel_67_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_67_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_67" id="sublabel_67_litemode" style="min-height:13px">Date</label></span>
+            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_67" name="q67_dataDa[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_67 sublabel_67_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_67" id="sublabel_67_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_67" name="q67_dataDa[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_67 sublabel_67_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_67" id="sublabel_67_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_67" name="q67_dataDa[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_67 sublabel_67_year" value="" /><label class="form-sub-label" for="year_67" id="sublabel_67_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_67" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_67 sublabel_67_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_67_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_67" id="sublabel_67_litemode" style="min-height:13px">Date</label></span>
           </div>
         </div>
       </li>
@@ -364,7 +381,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       <li class="form-line" data-type="control_datetime" id="id_71"><label class="form-label form-label-top form-label-auto" id="label_71" for="lite_mode_71" aria-hidden="false"> DATA DE NASCIMENTO </label>
         <div id="cid_71" class="form-input-wide" data-layout="half">
           <div data-wrapper-react="true">
-            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_71" name="q71_dataDe71[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_71 sublabel_71_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_71" id="sublabel_71_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_71" name="q71_dataDe71[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_71 sublabel_71_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_71" id="sublabel_71_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_71" name="q71_dataDe71[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_71 sublabel_71_year" value="" /><label class="form-sub-label" for="year_71" id="sublabel_71_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_71" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_71 sublabel_71_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_71_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_71" id="sublabel_71_litemode" style="min-height:13px">Date</label></span>
+            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_71" name="q71_dataDe71[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_71 sublabel_71_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_71" id="sublabel_71_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_71" name="q71_dataDe71[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_71 sublabel_71_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_71" id="sublabel_71_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_71" name="q71_dataDe71[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_71 sublabel_71_year" value="" /><label class="form-sub-label" for="year_71" id="sublabel_71_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_71" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_71 sublabel_71_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_71_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_71" id="sublabel_71_litemode" style="min-height:13px">Date</label></span>
           </div>
         </div>
       </li>
@@ -409,7 +426,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       <li class="form-line" data-type="control_datetime" id="id_73"><label class="form-label form-label-top form-label-auto" id="label_73" for="lite_mode_73" aria-hidden="false"> DATA DE NASCIMENTO </label>
         <div id="cid_73" class="form-input-wide" data-layout="half">
           <div data-wrapper-react="true">
-            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_73" name="q73_dataDe[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_73 sublabel_73_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_73" id="sublabel_73_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_73" name="q73_dataDe[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_73 sublabel_73_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_73" id="sublabel_73_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_73" name="q73_dataDe[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_73 sublabel_73_year" value="" /><label class="form-sub-label" for="year_73" id="sublabel_73_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_73" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_73 sublabel_73_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_73_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_73" id="sublabel_73_litemode" style="min-height:13px">Date</label></span>
+            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_73" name="q73_dataDe[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_73 sublabel_73_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_73" id="sublabel_73_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_73" name="q73_dataDe[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_73 sublabel_73_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_73" id="sublabel_73_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_73" name="q73_dataDe[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_73 sublabel_73_year" value="" /><label class="form-sub-label" for="year_73" id="sublabel_73_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_73" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_73 sublabel_73_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_73_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_73" id="sublabel_73_litemode" style="min-height:13px">Date</label></span>
           </div>
         </div>
       </li>
@@ -454,7 +471,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       <li class="form-line" data-type="control_datetime" id="id_74"><label class="form-label form-label-top form-label-auto" id="label_74" for="lite_mode_74" aria-hidden="false"> DATA DE NASCIMENTO </label>
         <div id="cid_74" class="form-input-wide" data-layout="half">
           <div data-wrapper-react="true">
-            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_74" name="q74_dataDe74[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_74 sublabel_74_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_74" id="sublabel_74_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_74" name="q74_dataDe74[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_74 sublabel_74_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_74" id="sublabel_74_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_74" name="q74_dataDe74[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_74 sublabel_74_year" value="" /><label class="form-sub-label" for="year_74" id="sublabel_74_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_74" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_74 sublabel_74_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_74_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_74" id="sublabel_74_litemode" style="min-height:13px">Date</label></span>
+            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_74" name="q74_dataDe74[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_74 sublabel_74_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_74" id="sublabel_74_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_74" name="q74_dataDe74[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_74 sublabel_74_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_74" id="sublabel_74_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_74" name="q74_dataDe74[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_74 sublabel_74_year" value="" /><label class="form-sub-label" for="year_74" id="sublabel_74_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_74" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_74 sublabel_74_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_74_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_74" id="sublabel_74_litemode" style="min-height:13px">Date</label></span>
           </div>
         </div>
       </li>
@@ -499,7 +516,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
       <li class="form-line" data-type="control_datetime" id="id_75"><label class="form-label form-label-top form-label-auto" id="label_75" for="lite_mode_75" aria-hidden="false"> Date </label>
         <div id="cid_75" class="form-input-wide" data-layout="half">
           <div data-wrapper-react="true">
-            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_75" name="q75_date75[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_75 sublabel_75_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_75" id="sublabel_75_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_75" name="q75_date75[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_75 sublabel_75_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_75" id="sublabel_75_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_75" name="q75_date75[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_75 sublabel_75_year" value="" /><label class="form-sub-label" for="year_75" id="sublabel_75_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_75" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_75 sublabel_75_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_75_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_75" id="sublabel_75_litemode" style="min-height:13px">Date</label></span>
+            <div style="display:none"><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="day_75" name="q75_date75[day]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_75 sublabel_75_day" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="day_75" id="sublabel_75_day" style="min-height:13px">Day</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="month_75" name="q75_date75[month]" type="tel" size="2" data-maxlength="2" data-age="" maxLength="2" autoComplete="off" aria-labelledby="label_75 sublabel_75_month" value="" /><span class="date-separate" aria-hidden="true"> -</span><label class="form-sub-label" for="month_75" id="sublabel_75_month" style="min-height:13px">Month</label></span><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate]" id="year_75" name="q75_date75[year]" type="tel" size="4" data-maxlength="4" data-age="" maxLength="4" autoComplete="off" aria-labelledby="label_75 sublabel_75_year" value="" /><label class="form-sub-label" for="year_75" id="sublabel_75_year" style="min-height:13px">Year</label></span></div><span class="form-sub-label-container" style="vertical-align:top"><input class="form-textbox validate[limitDate, validateLiteDate]" id="lite_mode_75" type="text" size="12" data-maxlength="12" maxLength="12" data-age="" data-format="ddmmyyyy" data-seperator="-" placeholder="DD-MM-YYYY" data-placeholder="DD-MM-YYYY" autoComplete="off" aria-labelledby="label_75 sublabel_75_litemode" value="" /><button type="button" class=" newDefaultTheme-dateIcon focusable icon-liteMode" id="input_75_pick" data-component="datetime" aria-hidden="true" data-allow-time="No" data-version="v2"></button><label class="form-sub-label" for="lite_mode_75" id="sublabel_75_litemode" style="min-height:13px">Date</label></span>
           </div>
         </div>
       </li>
@@ -556,12 +573,8 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
         <div id="cid_58" class="form-input-wide" data-layout="half"> <input type="text" id="input_58" name="q58_nome58" data-type="input-textbox" class="form-textbox" data-defaultvalue="" style="width:310px" size="310" data-component="textbox" aria-labelledby="label_58" value="" /> </div>
       </li>
       <li class="form-line" data-type="control_button" id="id_59">
-<!-- BOTÃO DO WHATSAPP -->
-<button id="send-whatsapp" type="button" class="form-submit-button" style="background-color: #25D366; color: white; margin-left: 10px;">
-    Enviar via WhatsApp
-</button>
         <div id="cid_59" class="form-input-wide" data-layout="full">
-          <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_preview_59" type="button" class="form-submit-preview jf-form-buttons form-submit-button-reports-400" data-component="button"><img alt="" src="https://cdn.jotfor.ms/assets/img/theme-assets/5ca4930530899c64ff77cfa1/previewPDF-icon.svg" /><span id="span_preview_59" class="span_preview">Baixar PDF</span></button><span> </span><button id="input_59" type="submit" class="form-submit-button form-submit-button-reports-400 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Enviar</button></div>
+          <div data-align="auto" class="form-buttons-wrapper form-buttons-auto   jsTest-button-wrapperField"><button id="input_preview_59" type="button" class="form-submit-preview jf-form-buttons form-submit-button-reports-400" data-component="button"><img alt="" src="https://cdn.jotfor.ms/assets/img/theme-assets/5ca4930530899c64ff77cfa1/previewPDF-icon.svg" /><span id="span_preview_59" class="span_preview">Baixar PDF</span></button><span> </span><button id="input_59" type="submit" class="form-submit-button form-submit-button-reports-400 submit-button jf-form-buttons jsTest-submitField legacy-submit" data-component="button" data-content="">Enviar</button></div>
           <div class="form-submit-clear-wrapper"><button id="input_reset_59" type="reset" class="form-submit-reset form-submit-button-reports-400 jf-form-buttons" data-component="button">Limpar</button></div>
         </div>
       </li>
@@ -582,54 +595,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     }
   </script>
 </form><script type="text/javascript">JotForm.ownerView=true;</script><script type="text/javascript">JotForm.isNewSACL=true;</script>
-<script>
-    // Esta função será chamada quando o botão for clicado
-    function sendToWhatsApp() {
-        // 1. Defina o número de telefone
-        const phoneNumber = '5591998192610';
+    <script type="text/javascript" src="https://form.jotform.com/jsform/252474593439064"></script>
 
-        // 2. Funções para ajudar a obter os valores dos campos
-        const getValue = (id) => document.getElementById(id)?.value.trim() || '';
-        const getCheckedValues = (name) => {
-            const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
-            return Array.from(checkboxes).map(cb => cb.value).join(', ');
-        };
-
-        // 3. Recolha todos os dados dos campos do formulário
-        const bo_n = getValue('input_3');
-        const data = getValue('lite_mode_67');
-        const hora = getValue('input_55_timeInput');
-        const local = [getValue('input_5'), getValue('input_8'), getValue('input_9')].filter(Boolean).join(' - ');
-        const material = getValue('input_46');
-        const relatorio = getValue('input_47');
-
-        // (Aqui entra a lógica para processar e formatar os envolvidos, como no ficheiro anterior)
-        // ...
-
-        // 4. Monte a mensagem final com o seu texto e os dados recolhidos
-        const template = `POLÍCIA MILITAR DO MARANHÃO
-CPI / CPAI-5 / 10º BPM
-
-*TÍTULO DA OCORRÊNCIA:*
-
-*BO №:* ${bo_n}
-*Data:* ${data}
-*Hora:* ${hora}
-*Local:* ${local}
-*Localização:* *Procedimentos adotados:*
-
-*Material Apreendido/apresentado:*
-${material}
-
-*Relatório:*
-${relatorio}`;
-
-        // 5. Prepare a mensagem para um link e abra o WhatsApp
-        const encodedMessage = encodeURIComponent(template);
-        const url = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        window.open(url, '_blank');
-    }
-
-    // 6. Diga ao botão para executar a função quando for clicado
-    document.getElementById('send-whatsapp').addEventListener('click', sendToWhatsApp);
-</script>
+</body>
+</html>
