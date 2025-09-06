@@ -578,7 +578,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
 
     <span>&nbsp;</span>
 
-    <button id="enviar_whatsapp" type="button" class="form-submit-button form-submit-button-reports-400" style="background-color: #25D366; border-color: #25D366;">
+    <button id="enviar_whatsapp" type="button" class="form-submit-button form-submit-button-reports-400 jf-form-buttons" style="background-color: #25D366; border-color: #25D366;">
       Enviar pelo WhatsApp
     </button>
 
@@ -610,7 +610,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
 <script type="text/javascript">
   // Função para formatar o texto e enviar via WhatsApp
   function enviarViaWhatsApp() {
-    // Coleta dos dados do formulário
+    // Coleta dos dados gerais da ocorrência
     const bo_n = document.getElementById('input_3').value;
     const data_ocorrencia = document.getElementById('lite_mode_67').value;
     const hora_fato = document.getElementById('input_55_timeInput').value;
@@ -627,61 +627,67 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     mensagem += `*BO №:* ${bo_n}\n`;
     mensagem += `*Data:* ${data_ocorrencia}\n`;
     mensagem += `*Hora:* ${hora_fato}\n`;
-    mensagem += `*Local:* ${local}, ${bairro} - ${ponto_ref}\n`;
+    // Combina os campos de endereço em uma única linha, se existirem
+    const localCompleto = [local, bairro, ponto_ref].filter(Boolean).join(', ');
+    mensagem += `*Local:* ${localCompleto}\n`;
     mensagem += `*Localização:*\n\n`;
     mensagem += `*Procedimentos adotados:*\n\n`;
 
-    // Função para adicionar envolvidos se os campos estiverem preenchidos
+    let envolvidos_texto = "";
+
+    // Função interna para processar cada envolvido
     function adicionarEnvolvido(num, nome_id, cpf_id, endereco_id) {
-      const nome = document.getElementById(nome_id).value;
-      const cpf = document.getElementById(cpf_id).value;
-      const residencia = document.getElementById(endereco_id).value;
+        const nome = document.getElementById(nome_id).value;
+        if (!nome) return ""; // Retorna vazio se não houver nome
 
-      let tipoEnvolvimento = "";
-      let checkboxes;
+        const cpf = document.getElementById(cpf_id).value;
+        const residencia = document.getElementById(endereco_id).value;
 
-      if (num === 1) checkboxes = document.querySelectorAll('input[name="q81_typeA[]"]:checked');
-      if (num === 2) checkboxes = document.querySelectorAll('input[name="q83_envolvimento83[]"]:checked');
-      if (num === 3) checkboxes = document.querySelectorAll('input[name="q84_envolvimento[]"]:checked');
-      if (num === 4) checkboxes = document.querySelectorAll('input[name="q85_envolvimento85[]"]:checked');
+        let tipoEnvolvimento = "";
+        let checkboxes;
 
-      if(checkboxes && checkboxes.length > 0) {
-          tipoEnvolvimento = checkboxes[0].value;
-      }
+        // Identifica o grupo de checkboxes correto para cada envolvido
+        if (num === 1) checkboxes = document.querySelectorAll('input[name="q81_typeA[]"]:checked');
+        if (num === 2) checkboxes = document.querySelectorAll('input[name="q83_envolvimento83[]"]:checked');
+        if (num === 3) checkboxes = document.querySelectorAll('input[name="q84_envolvimento[]"]:checked');
+        if (num === 4) checkboxes = document.querySelectorAll('input[name="q85_envolvimento85[]"]:checked');
 
-      if (nome) {
-        let textoEnvolvido = "";
-        if (tipoEnvolvimento === "Vítima") {
-          textoEnvolvido += `*Vitima ${num}:* ${nome}\n`;
-        } else if (tipoEnvolvimento === "Conduzido" || tipoEnvolvimento === "Proprietário") {
-          textoEnvolvido += `*Suspeito ${num}:* ${nome}\n`;
+        if (checkboxes && checkboxes.length > 0) {
+            tipoEnvolvimento = checkboxes[0].value;
         } else {
-          textoEnvolvido += `*Envolvido ${num} (${tipoEnvolvimento}):* ${nome}\n`;
+            return ""; // Retorna vazio se nenhum envolvimento for selecionado
         }
-        textoEnvolvido += `*CPF:* ${cpf}\n`;
-        textoEnvolvido += `*Endereço:* ${residencia}\n\n`;
-        return textoEnvolvido;
-      }
-      return "";
+
+        // Lista de envolvimentos que devem ser incluídos na mensagem
+        const validos = ["Vítima", "Conduzido", "Proprietário", "Outros"];
+
+        // Se o envolvimento for um dos válidos, formata e retorna o texto
+        if (validos.includes(tipoEnvolvimento)) {
+            // Formata o texto sem numeração
+            return `*${tipoEnvolvimento.toUpperCase()}:*\nNome: ${nome}\nCPF: ${cpf}\nEndereço: ${residencia}\n\n`;
+        }
+
+        return ""; // Retorna vazio para os tipos não selecionados (ex: Testemunha)
     }
 
-    // Adiciona os envolvidos na mensagem
-    mensagem += adicionarEnvolvido(1, 'input_11', 'input_17', 'input_13');
-    mensagem += adicionarEnvolvido(2, 'input_20', 'input_26', 'input_22');
-    mensagem += adicionarEnvolvido(3, 'input_29', 'input_35', 'input_31');
-    mensagem += adicionarEnvolvido(4, 'input_38', 'input_44', 'input_40');
+    // Adiciona o texto de cada envolvido válido à variável
+    envolvidos_texto += adicionarEnvolvido(1, 'input_11', 'input_17', 'input_13');
+    envolvidos_texto += adicionarEnvolvido(2, 'input_20', 'input_26', 'input_22');
+    envolvidos_texto += adicionarEnvolvido(3, 'input_29', 'input_35', 'input_31');
+    envolvidos_texto += adicionarEnvolvido(4, 'input_38', 'input_44', 'input_40');
 
-    // Adiciona material apreendido e relatório
+    // Adiciona os envolvidos e o restante das informações
+    mensagem += envolvidos_texto;
     mensagem += `*Material Apreendido/apresentado:*\n${material_apreendido}\n\n`;
     mensagem += `*Relatório:*\n${relatorio}\n`;
 
-    // Formata a mensagem para URL e abre o WhatsApp
+    // Codifica a mensagem para URL e abre o WhatsApp
     const numero = "+5591998192610";
     const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensagem)}`;
     window.open(urlWhatsApp, '_blank');
   }
 
-  // Adiciona o "ouvinte" de evento ao botão
+  // Conecta a função ao evento de clique do botão
   document.getElementById('enviar_whatsapp').addEventListener('click', enviarViaWhatsApp);
 </script>
 
