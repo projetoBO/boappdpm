@@ -704,6 +704,45 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
   });
   // -----------------------------
 </script>
+<script type="text/javascript">
+  function removerBrandingJotform() {
+    // Seletores comuns para o rodapé da Jotform
+    const seletores = [
+      '[class*="branding-footer"]',
+      '#brandingFooter',
+      '[data-testid="branding-footer"]',
+      'a[href*="jotform.com/pricing"]' // Um seletor bem específico do link
+    ];
 
+    for (const seletor of seletores) {
+      const elemento = document.querySelector(seletor);
+
+      if (elemento) {
+        // Se encontrarmos o link, removemos o contêiner pai dele
+        const containerParaRemover = elemento.closest('div[class*="branding"]');
+        if (containerParaRemover) {
+          containerParaRemover.remove();
+          //console.log('Branding da Jotform removido.');
+          break; // Para a busca assim que remover
+        } else {
+          // Se não houver um contêiner pai, remove o próprio elemento
+          elemento.remove();
+        }
+      }
+    }
+  }
+
+  // Espera a página carregar completamente, incluindo scripts externos
+  window.addEventListener('load', function() {
+    // Tenta remover a barra em diferentes momentos para garantir
+    // que ela seja pega mesmo se for criada com atraso.
+    setTimeout(removerBrandingJotform, 100); // Rápido
+    setTimeout(removerBrandingJotform, 500); // Meio segundo depois
+    setTimeout(removerBrandingJotform, 2000); // E dois segundos depois, por segurança
+  });
+</script>
+
+</body>
+</html>
 </body>
 </html>
