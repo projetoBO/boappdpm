@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en-US">
   <head>
     <meta charset="UTF-8">
@@ -6,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>boappdpm</title>
 <meta name="generator" content="Jekyll v3.10.0" />
 <meta property="og:title" content="boappdpm" />
 <meta property="og:locale" content="en_US" />
