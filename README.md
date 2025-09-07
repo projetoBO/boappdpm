@@ -780,11 +780,5 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
   });
 </script>
 
-</body>
-</html>
-<p>&lt;/body&gt;
-&lt;/html&gt;</p>
-
-
   </body>
 </html>
