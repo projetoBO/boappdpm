@@ -268,7 +268,7 @@ JotForm.paymentExtrasOnTheFly([null,{"name":"10Bpmpmma","qid":"1","text":"10º B
     background-color: #483D8B;
   }
   .supernova body {
-    background: transparent;
+    background: #483D8B;
   }
   
     .form-textbox,
