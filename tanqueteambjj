@@ -1,300 +1,468 @@
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Boletim de Ocorrência</title>
+    <title>Tanque Team Jiu-Jitsu | Matrícula Online</title>
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#D90429',
+                            dark: '#1B1B1B',
+                            gray: '#2B2D42',
+                            light: '#EDF2F4'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Roboto', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #483D8B; /* Fundo principal */
+        .hero-bg {
+            /* Imagem atualizada para pessoa de Kimono */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1564415315949-7a0c4c73aab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
-        .shadow-3d {
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        
+        .signature-font {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 1.5rem;
+            color: #000;
         }
-        /* Estilos para caixas de seleção para se alinharem ao design */
-        .form-checkbox-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.5rem;
+
+        /* Custom Scrollbar for Contract */
+        .contract-scroll::-webkit-scrollbar {
+            width: 8px;
         }
-        .form-checkbox-item label {
-            margin-left: 0.5rem;
-            font-size: 0.875rem;
-            color: #4b5563;
-            cursor: pointer;
+        .contract-scroll::-webkit-scrollbar-track {
+            background: #f1f1f1; 
         }
-        .form-checkbox {
-            height: 1rem;
-            width: 1rem;
-            border-radius: 0.25rem;
-            border-color: #d1d5db;
-            color: #3b82f6;
-            transition: all 0.2s;
+        .contract-scroll::-webkit-scrollbar-thumb {
+            background: #888; 
+            border-radius: 4px;
         }
-        .form-checkbox:focus {
-            --tw-ring-color: #3b82f6;
-            border-color: #3b82f6;
+        .contract-scroll::-webkit-scrollbar-thumb:hover {
+            background: #555; 
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="p-4 sm:p-6 md:p-8">
+<body class="bg-brand-light text-slate-800 font-sans antialiased">
 
-    <div class="bg-white rounded-2xl shadow-3d p-6 md:p-10 max-w-5xl mx-auto">
+    <!-- Navigation -->
+    <nav class="bg-brand-dark text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <!-- Icone de Tanque SVG Personalizado -->
+                <svg class="w-10 h-10 text-brand-red fill-current" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M64 352c0-17.7-14.3-32-32-32S0 334.3 0 352v64c0 17.7 14.3 32 32 32s32-14.3 32-32v-64zm128 0c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7 14.3 32 32 32s32-14.3 32-32v-64zm128 0c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7 14.3 32 32 32s32-14.3 32-32v-64zm128 0c0-17.7-14.3-32-32-32s-32 14.3-32 32v64c0 17.7 14.3 32 32 32s32-14.3 32-32v-64zm80-96H504c-13.3 0-24 10.7-24 24v40c0 68.2-55.3 123.5-123.5 123.5H349l16.2-38.4c5.7-13.5 .7-29.2-11.4-36.9c-29.4-18.7-65.7-16-92.4 4.9l-4.5 3.5 7.5-123.5H169.6c-12 0-24.2 .7-36.4 1.8C105 261.8 91.3 293.7 103 321.6l16.8 40.1H123.5C55.3 361.7 0 306.4 0 238.1V198.1c0-13.3 10.7-24 24-24h23.2C60.1 116.1 111.4 72.3 173 72.3h72c5.4 0 10.7 .6 15.8 1.8L240.4 25.7C234.5 11.7 244.8 0 260 0h49.3c11.6 .3 21 9.7 21 21.3s-9.4 21-21 21h-27l13.8 32.8c32.8 13.1 56.9 44.5 58.7 81.3H528c17.7 0 32 14.3 32 32s-14.3 32-32 32z"/>
+                </svg>
+                <span class="font-display text-2xl font-bold tracking-wider">TANQUE TEAM <span class="text-brand-red">BJJ</span></span>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 font-display uppercase tracking-wide text-sm">
+                <a href="#home" class="hover:text-brand-red transition">Início</a>
+                <a href="#about" class="hover:text-brand-red transition">A Metodologia</a>
+                <a href="#plans" class="hover:text-brand-red transition">Planos</a>
+                <a href="#register" class="bg-brand-red px-5 py-2 rounded text-white hover:bg-red-700 transition">Matricule-se Agora</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-2xl focus:outline-none">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
         
-        <header class="text-center mb-10">
-            <img src="https://pm.ssp.ma.gov.br/wp-content/uploads/2023/05/BRASAO-SD-RAYOL-e1683655730963.png" alt="Brasão da Polícia Militar do Maranhão" class="w-20 h-auto mx-auto mb-4">
-            <div class="border-b-2 border-gray-200 py-4">
-                <h1 class="text-lg font-bold tracking-wide text-gray-700">ESTADO DO MARANHÃO</h1>
-                <p class="text-sm text-gray-500">SECRETARIA DE SEGURANÇA PÚBLICA</p>
-                <p class="text-sm text-gray-500">10º BATALHÃO DA POLÍCIA MILITAR - 2ª CIA</p>
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-extrabold text-gray-800 mt-8">Formulário de Boletim de Ocorrência</h2>
-            <p class="text-center text-lg font-semibold text-gray-600 -mt-1 mb-8">TURIAÇU</p>
-        </header>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark pb-4 px-6">
+            <a href="#home" class="block py-2 hover:text-brand-red">Início</a>
+            <a href="#about" class="block py-2 hover:text-brand-red">A Metodologia</a>
+            <a href="#plans" class="block py-2 hover:text-brand-red">Planos</a>
+            <a href="#register" class="block py-2 text-brand-red font-bold">Matricule-se</a>
+        </div>
+    </nav>
 
-        <form class="jotform-form" action="https://submit.jotform.com/submit/252474593439064" method="post" name="form_252474593439064" id="252474593439064" accept-charset="utf-8" autocomplete="on">
-            <input type="hidden" name="formID" value="252474593439064" />
-            
-            <div class="mb-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                <h3 class="text-lg font-bold text-gray-800 mb-6 uppercase tracking-wider border-b pb-2">1. Dados da Ocorrência</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-                    <div>
-                        <label for="input_3" class="text-sm font-medium text-gray-600 block mb-1">BO N°:</label>
-                        <input type="text" id="input_3" name="q3_boN" class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 rounded-lg">
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-screen flex items-center justify-center text-center px-4">
+        <div class="max-w-4xl text-white fade-in">
+            <h2 class="font-display text-lg md:text-2xl mb-4 tracking-widest uppercase text-brand-red">Disciplina • Respeito • Técnica</h2>
+            <h1 class="font-display text-5xl md:text-7xl font-bold mb-6 leading-tight">DOMINE A <br>ARTE SUAVE</h1>
+            <p class="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
+                Não é sobre força, é sobre alavanca. Transforme sua mente e corpo na maior academia de Jiu-Jitsu da região.
+            </p>
+            <div class="flex flex-col md:flex-row gap-4 justify-center">
+                <a href="#register" class="bg-brand-red text-white px-8 py-4 rounded font-bold font-display uppercase tracking-wider hover:bg-red-700 transition shadow-lg transform hover:-translate-y-1">
+                    Começar Hoje
+                </a>
+                <a href="#about" class="border-2 border-white text-white px-8 py-4 rounded font-bold font-display uppercase tracking-wider hover:bg-white hover:text-brand-dark transition">
+                    Saiba Mais
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features / About -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-brand-dark mb-4">POR QUE A TANQUE TEAM?</h2>
+                <div class="w-24 h-1 bg-brand-red mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-red text-2xl">
+                        <i class="fa-solid fa-user-ninja"></i>
                     </div>
-                    <div>
-                        <label for="input_55_timeInput" class="text-sm font-medium text-gray-600 block mb-1">Hora do Fato:</label>
-                        <input class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 rounded-lg" id="input_55_timeInput" name="q55_time[timeInput]" type="text" placeholder="HH:MM">
+                    <h3 class="font-display text-xl font-bold mb-3">Professores Faixa Preta</h3>
+                    <p class="text-gray-600">Aprenda diretamente com mestres certificados e com experiência em competições internacionais.</p>
+                </div>
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-red text-2xl">
+                        <i class="fa-solid fa-shield-heart"></i>
                     </div>
-                    <div>
-                        <label for="lite_mode_67" class="text-sm font-medium text-gray-600 block mb-1">Data da Ocorrência:</label>
-                        <input class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 rounded-lg" id="lite_mode_67" name="q67_dataDa[litemode]" type="text" placeholder="DD-MM-YYYY">
+                    <h3 class="font-display text-xl font-bold mb-3">Ambiente Seguro</h3>
+                    <p class="text-gray-600">Foco total no respeito e na integridade física do aluno. O Jiu-Jitsu é para todos.</p>
+                </div>
+                <div class="text-center p-6 border border-gray-100 rounded-xl shadow-sm hover:shadow-xl transition duration-300">
+                    <div class="w-16 h-16 bg-brand-light rounded-full flex items-center justify-center mx-auto mb-6 text-brand-red text-2xl">
+                        <i class="fa-solid fa-child-reaching"></i>
                     </div>
-                     <div class="lg:col-span-2">
-                        <label for="input_5" class="text-sm font-medium text-gray-600 block mb-1">Local da Ocorrência:</label>
-                        <input type="text" id="input_5" name="q5_localDa" class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 rounded-lg">
+                    <h3 class="font-display text-xl font-bold mb-3">Metodologia Infantil</h3>
+                    <p class="text-gray-600">Programas anti-bullying e desenvolvimento de autoconfiança para crianças a partir de 4 anos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section id="plans" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl font-bold text-brand-dark mb-4">ESCOLHA SEU PLANO</h2>
+                <p class="text-gray-600">Sem taxas de cancelamento. Evolua no seu ritmo.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <!-- Plan 1 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-gray-400 transform hover:scale-105 transition duration-300">
+                    <div class="p-8 text-center">
+                        <h3 class="font-display text-2xl font-bold text-gray-800 mb-2">INICIANTE</h3>
+                        <p class="text-gray-500 text-sm mb-6">2x por Semana</p>
+                        <div class="text-4xl font-bold text-brand-dark mb-6">R$ 180<span class="text-lg text-gray-400 font-normal">/mês</span></div>
+                        <ul class="text-left space-y-3 mb-8 text-gray-600 text-sm">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Acesso às aulas fundamentais</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Sem fidelidade</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Uso do tatame livre</li>
+                        </ul>
+                        <button onclick="selectPlan('iniciante', 180)" class="w-full py-3 border-2 border-brand-dark text-brand-dark font-bold rounded hover:bg-brand-dark hover:text-white transition">Selecionar</button>
                     </div>
-                     <div>
-                        <label class="text-sm font-medium text-gray-600 block mb-1">Autoria:</label>
-                        <div id="cid_54" class="flex items-center space-x-4 pt-3">
-                            <span class="form-checkbox-item"><input type="checkbox" class="form-checkbox" id="input_54_0" name="q54_autoria[]" value="Conhecida"><label for="input_54_0">Conhecida</label></span>
-                            <span class="form-checkbox-item"><input type="checkbox" class="form-checkbox" id="input_54_1" name="q54_autoria[]" value="Desconhecida"><label for="input_54_1">Desconhecida</label></span>
+                </div>
+
+                <!-- Plan 2 (Featured) -->
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden border-t-4 border-brand-red transform scale-105 z-10 relative">
+                    <div class="absolute top-0 right-0 bg-brand-red text-white text-xs font-bold px-3 py-1 rounded-bl">POPULAR</div>
+                    <div class="p-8 text-center">
+                        <h3 class="font-display text-2xl font-bold text-brand-red mb-2">GUERREIRO</h3>
+                        <p class="text-gray-500 text-sm mb-6">Livre (Todos os dias)</p>
+                        <div class="text-4xl font-bold text-brand-dark mb-6">R$ 250<span class="text-lg text-gray-400 font-normal">/mês</span></div>
+                        <ul class="text-left space-y-3 mb-8 text-gray-600 text-sm">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Acesso ilimitado</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Aulas de todos os níveis</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Desconto em seminários</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> 1 Camiseta Grátis</li>
+                        </ul>
+                        <button onclick="selectPlan('guerreiro', 250)" class="w-full py-3 bg-brand-red text-white font-bold rounded hover:bg-red-700 transition shadow-lg">Selecionar</button>
+                    </div>
+                </div>
+
+                <!-- Plan 3 -->
+                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border-t-4 border-black transform hover:scale-105 transition duration-300">
+                    <div class="p-8 text-center">
+                        <h3 class="font-display text-2xl font-bold text-brand-dark mb-2">COMPETIDOR</h3>
+                        <p class="text-gray-500 text-sm mb-6">Plano Anual</p>
+                        <div class="text-4xl font-bold text-brand-dark mb-6">R$ 200<span class="text-lg text-gray-400 font-normal">/mês</span></div>
+                        <ul class="text-left space-y-3 mb-8 text-gray-600 text-sm">
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Tudo do plano Guerreiro</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Acesso a treinos de competição</li>
+                            <li class="flex items-center"><i class="fa-solid fa-check text-green-500 mr-2"></i> Personalização de Kimono</li>
+                        </ul>
+                        <button onclick="selectPlan('competidor', 200)" class="w-full py-3 border-2 border-brand-dark text-brand-dark font-bold rounded hover:bg-brand-dark hover:text-white transition">Selecionar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration & Contract Section -->
+    <section id="register" class="py-20 bg-brand-dark text-white relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12">
+                
+                <!-- Left Column: Info -->
+                <div class="md:w-1/3">
+                    <h2 class="font-display text-4xl font-bold mb-6">MATRÍCULA <span class="text-brand-red">ONLINE</span></h2>
+                    <p class="text-gray-400 mb-8">Preencha seus dados para gerar seu contrato digital. Ao finalizar, sua matrícula estará pré-aprovada e você poderá vir buscar seu kit de boas-vindas.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-brand-red mr-4">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">Localização</h4>
+                                <p class="text-gray-400 text-sm">Rua das Faixas, 123 - Centro</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-brand-red mr-4">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold">WhatsApp</h4>
+                                <p class="text-gray-400 text-sm">(11) 99999-9999</p>
+                            </div>
                         </div>
                     </div>
-                     <div>
-                        <label for="input_8" class="text-sm font-medium text-gray-600 block mb-1">Bairro:</label>
-                        <input type="text" id="input_8" name="q8_bairro" class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 rounded-lg">
-                    </div>
-                    <div class="lg:col-span-2">
-                        <label for="input_9" class="text-sm font-medium text-gray-600 block mb-1">Ponto de Referência:</label>
-                        <input type="text" id="input_9" name="q9_pontoDe" class="w-full p-3 border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200 rounded-lg">
-                    </div>
-                </div>
-            </div>
 
-            <div class="mb-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                <h3 class="text-lg font-bold text-gray-800 mb-6 uppercase tracking-wider border-b pb-2">2. Envolvido 1</h3>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-                    <div class="lg:col-span-3">
-                        <label class="text-sm font-medium text-gray-600 block mb-2">Envolvimento:</label>
-                         <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
-                            <span class="form-checkbox-item"><input id="q81_0" type="checkbox" class="form-checkbox" name="q81_typeA[]" value="Condutor"><label for="q81_0">Condutor</label></span>
-                            <span class="form-checkbox-item"><input id="q81_1" type="checkbox" class="form-checkbox" name="q81_typeA[]" value="Testemunha"><label for="q81_1">Testemunha</label></span>
-                            <span class="form-checkbox-item"><input id="q81_2" type="checkbox" class="form-checkbox" name="q81_typeA[]" value="Vítima"><label for="q81_2">Vítima</label></span>
-                            <span class="form-checkbox-item"><input id="q81_3" type="checkbox" class="form-checkbox" name="q81_typeA[]" value="Conduzido"><label for="q81_3">Conduzido</label></span>
-                            <span class="form-checkbox-item"><input id="q81_4" type="checkbox" class="form-checkbox" name="q81_typeA[]" value="Proprietário"><label for="q81_4">Proprietário</label></span>
-                            <span class="form-checkbox-item"><input id="q81_5" type="checkbox" class="form-checkbox" name="q81_typeA[]" value="Outros"><label for="q81_5">Outros</label></span>
+                    <!-- Selected Plan Summary -->
+                    <div id="plan-summary" class="mt-8 p-6 bg-gray-800 rounded-lg border border-gray-700 hidden">
+                        <h4 class="text-gray-400 text-xs uppercase tracking-widest mb-2">Plano Selecionado</h4>
+                        <div class="flex justify-between items-end">
+                            <span id="summary-name" class="font-display text-2xl font-bold text-brand-red">---</span>
+                            <span id="summary-price" class="text-xl">R$ 0,00</span>
                         </div>
                     </div>
-                    <div class="lg:col-span-2"><label for="input_11" class="text-sm font-medium text-gray-600 block mb-1">Nome:</label><input type="text" id="input_11" name="q11_nome" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="lite_mode_71" class="text-sm font-medium text-gray-600 block mb-1">Data de Nascimento:</label><input type="text" id="lite_mode_71" name="q71_dataDe71[litemode]" placeholder="DD-MM-YYYY" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div class="lg:col-span-2"><label for="input_13" class="text-sm font-medium text-gray-600 block mb-1">Residência:</label><input type="text" id="input_13" name="q13_residencia" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_16" class="text-sm font-medium text-gray-600 block mb-1">N° da Casa:</label><input type="text" id="input_16" name="q16_nDa" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_15" class="text-sm font-medium text-gray-600 block mb-1">Bairro:</label><input type="text" id="input_15" name="q15_bairro15" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_14" class="text-sm font-medium text-gray-600 block mb-1">Cidade:</label><input type="text" id="input_14" name="q14_cidade" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_18" class="text-sm font-medium text-gray-600 block mb-1">Profissão:</label><input type="text" id="input_18" name="q18_profissao" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div class="lg:col-span-1"><label class="text-sm font-medium text-gray-600 block mb-2">Tipo de Documento:</label><div class="flex items-center space-x-4 pt-1"><span class="form-checkbox-item"><input id="q86_0" type="checkbox" class="form-checkbox" name="q86_tipoDe[]" value="CPF"><label for="q86_0">CPF</label></span><span class="form-checkbox-item"><input id="q86_1" type="checkbox" class="form-checkbox" name="q86_tipoDe[]" value="CI"><label for="q86_1">CI</label></span><span class="form-checkbox-item"><input id="q86_2" type="checkbox" class="form-checkbox" name="q86_tipoDe[]" value="CNH"><label for="q86_2">CNH</label></span></div></div>
-                    <div class="lg:col-span-2"><label for="input_17" class="text-sm font-medium text-gray-600 block mb-1">Nº do Documento:</label><input type="text" id="input_17" name="q17_nDo" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
                 </div>
-            </div>
-            
-            <div class="mb-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                <h3 class="text-lg font-bold text-gray-800 mb-6 uppercase tracking-wider border-b pb-2">3. Envolvido 2 (Opcional)</h3>
-                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-                    <div class="lg:col-span-3"><label class="text-sm font-medium text-gray-600 block mb-2">Envolvimento:</label><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2"><span class="form-checkbox-item"><input id="q83_0" type="checkbox" class="form-checkbox" name="q83_envolvimento83[]" value="Condutor"><label for="q83_0">Condutor</label></span><span class="form-checkbox-item"><input id="q83_1" type="checkbox" class="form-checkbox" name="q83_envolvimento83[]" value="Testemunha"><label for="q83_1">Testemunha</label></span><span class="form-checkbox-item"><input id="q83_2" type="checkbox" class="form-checkbox" name="q83_envolvimento83[]" value="Vítima"><label for="q83_2">Vítima</label></span><span class="form-checkbox-item"><input id="q83_3" type="checkbox" class="form-checkbox" name="q83_envolvimento83[]" value="Conduzido"><label for="q83_3">Conduzido</label></span><span class="form-checkbox-item"><input id="q83_4" type="checkbox" class="form-checkbox" name="q83_envolvimento83[]" value="Proprietário"><label for="q83_4">Proprietário</label></span><span class="form-checkbox-item"><input id="q83_5" type="checkbox" class="form-checkbox" name="q83_envolvimento83[]" value="Outros"><label for="q83_5">Outros</label></span></div></div>
-                    <div class="lg:col-span-2"><label for="input_20" class="text-sm font-medium text-gray-600 block mb-1">Nome:</label><input type="text" id="input_20" name="q20_nome20" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="lite_mode_73" class="text-sm font-medium text-gray-600 block mb-1">Data de Nascimento:</label><input type="text" id="lite_mode_73" name="q73_dataDe[litemode]" placeholder="DD-MM-YYYY" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div class="lg:col-span-2"><label for="input_22" class="text-sm font-medium text-gray-600 block mb-1">Residência:</label><input type="text" id="input_22" name="q22_residencia22" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_25" class="text-sm font-medium text-gray-600 block mb-1">N° da Casa:</label><input type="text" id="input_25" name="q25_n25" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_24" class="text-sm font-medium text-gray-600 block mb-1">Bairro:</label><input type="text" id="input_24" name="q24_bairro24" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_23" class="text-sm font-medium text-gray-600 block mb-1">Cidade:</label><input type="text" id="input_23" name="q23_cidade23" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_27" class="text-sm font-medium text-gray-600 block mb-1">Profissão:</label><input type="text" id="input_27" name="q27_profissao27" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div class="lg:col-span-1"><label class="text-sm font-medium text-gray-600 block mb-2">Tipo de Documento:</label><div class="flex items-center space-x-4 pt-1"><span class="form-checkbox-item"><input id="q87_0" type="checkbox" class="form-checkbox" name="q87_tipoDe87[]" value="CPF"><label for="q87_0">CPF</label></span><span class="form-checkbox-item"><input id="q87_1" type="checkbox" class="form-checkbox" name="q87_tipoDe87[]" value="CI"><label for="q87_1">CI</label></span><span class="form-checkbox-item"><input id="q87_2" type="checkbox" class="form-checkbox" name="q87_tipoDe87[]" value="CNH"><label for="q87_2">CNH</label></span></div></div>
-                    <div class="lg:col-span-2"><label for="input_26" class="text-sm font-medium text-gray-600 block mb-1">Nº do Documento:</label><input type="text" id="input_26" name="q26_n26" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                </div>
-            </div>
-            
-            <div class="mb-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                <h3 class="text-lg font-bold text-gray-800 mb-6 uppercase tracking-wider border-b pb-2">4. Envolvido 3 (Opcional)</h3>
-                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-                    <div class="lg:col-span-3"><label class="text-sm font-medium text-gray-600 block mb-2">Envolvimento:</label><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2"><span class="form-checkbox-item"><input id="q84_0" type="checkbox" class="form-checkbox" name="q84_envolvimento[]" value="Condutor"><label for="q84_0">Condutor</label></span><span class="form-checkbox-item"><input id="q84_1" type="checkbox" class="form-checkbox" name="q84_envolvimento[]" value="Testemunha"><label for="q84_1">Testemunha</label></span><span class="form-checkbox-item"><input id="q84_2" type="checkbox" class="form-checkbox" name="q84_envolvimento[]" value="Vítima"><label for="q84_2">Vítima</label></span><span class="form-checkbox-item"><input id="q84_3" type="checkbox" class="form-checkbox" name="q84_envolvimento[]" value="Conduzido"><label for="q84_3">Conduzido</label></span><span class="form-checkbox-item"><input id="q84_4" type="checkbox" class="form-checkbox" name="q84_envolvimento[]" value="Proprietário"><label for="q84_4">Proprietário</label></span><span class="form-checkbox-item"><input id="q84_5" type="checkbox" class="form-checkbox" name="q84_envolvimento[]" value="Outros"><label for="q84_5">Outros</label></span></div></div>
-                    <div class="lg:col-span-2"><label for="input_29" class="text-sm font-medium text-gray-600 block mb-1">Nome:</label><input type="text" id="input_29" name="q29_nome29" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="lite_mode_74" class="text-sm font-medium text-gray-600 block mb-1">Data de Nascimento:</label><input type="text" id="lite_mode_74" name="q74_dataDe74[litemode]" placeholder="DD-MM-YYYY" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div class="lg:col-span-2"><label for="input_31" class="text-sm font-medium text-gray-600 block mb-1">Residência:</label><input type="text" id="input_31" name="q31_residencia31" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_34" class="text-sm font-medium text-gray-600 block mb-1">N° da Casa:</label><input type="text" id="input_34" name="q34_n34" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_33" class="text-sm font-medium text-gray-600 block mb-1">Bairro:</label><input type="text" id="input_33" name="q33_bairro33" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_32" class="text-sm font-medium text-gray-600 block mb-1">Cidade:</label><input type="text" id="input_32" name="q32_cidade32" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_36" class="text-sm font-medium text-gray-600 block mb-1">Profissão:</label><input type="text" id="input_36" name="q36_profissao36" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div class="lg:col-span-1"><label class="text-sm font-medium text-gray-600 block mb-2">Tipo de Documento:</label><div class="flex items-center space-x-4 pt-1"><span class="form-checkbox-item"><input id="q88_0" type="checkbox" class="form-checkbox" name="q88_tipoDe88[]" value="CPF"><label for="q88_0">CPF</label></span><span class="form-checkbox-item"><input id="q88_1" type="checkbox" class="form-checkbox" name="q88_tipoDe88[]" value="CI"><label for="q88_1">CI</label></span><span class="form-checkbox-item"><input id="q88_2" type="checkbox" class="form-checkbox" name="q88_tipoDe88[]" value="CNH"><label for="q88_2">CNH</label></span></div></div>
-                    <div class="lg:col-span-2"><label for="input_35" class="text-sm font-medium text-gray-600 block mb-1">Nº do Documento:</label><input type="text" id="input_35" name="q35_n35" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                </div>
-            </div>
-            
-             <div class="mb-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                <h3 class="text-lg font-bold text-gray-800 mb-6 uppercase tracking-wider border-b pb-2">5. Envolvido 4 (Opcional)</h3>
-                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4">
-                    <div class="lg:col-span-3"><label class="text-sm font-medium text-gray-600 block mb-2">Envolvimento:</label><div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2"><span class="form-checkbox-item"><input id="q85_0" type="checkbox" class="form-checkbox" name="q85_envolvimento85[]" value="Condutor"><label for="q85_0">Condutor</label></span><span class="form-checkbox-item"><input id="q85_1" type="checkbox" class="form-checkbox" name="q85_envolvimento85[]" value="Testemunha"><label for="q85_1">Testemunha</label></span><span class="form-checkbox-item"><input id="q85_2" type="checkbox" class="form-checkbox" name="q85_envolvimento85[]" value="Vítima"><label for="q85_2">Vítima</label></span><span class="form-checkbox-item"><input id="q85_3" type="checkbox" class="form-checkbox" name="q85_envolvimento85[]" value="Conduzido"><label for="q85_3">Conduzido</label></span><span class="form-checkbox-item"><input id="q85_4" type="checkbox" class="form-checkbox" name="q85_envolvimento85[]" value="Proprietário"><label for="q85_4">Proprietário</label></span><span class="form-checkbox-item"><input id="q85_5" type="checkbox" class="form-checkbox" name="q85_envolvimento85[]" value="Outros"><label for="q85_5">Outros</label></span></div></div>
-                    <div class="lg:col-span-2"><label for="input_38" class="text-sm font-medium text-gray-600 block mb-1">Nome:</label><input type="text" id="input_38" name="q38_nome38" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="lite_mode_75" class="text-sm font-medium text-gray-600 block mb-1">Data de Nascimento:</label><input type="text" id="lite_mode_75" name="q75_date75[litemode]" placeholder="DD-MM-YYYY" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div class="lg:col-span-2"><label for="input_40" class="text-sm font-medium text-gray-600 block mb-1">Residência:</label><input type="text" id="input_40" name="q40_residencia40" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_43" class="text-sm font-medium text-gray-600 block mb-1">N° da Casa:</label><input type="text" id="input_43" name="q43_n43" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_42" class="text-sm font-medium text-gray-600 block mb-1">Bairro:</label><input type="text" id="input_42" name="q42_bairro42" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_41" class="text-sm font-medium text-gray-600 block mb-1">Cidade:</label><input type="text" id="input_41" name="q41_cidade41" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div><label for="input_45" class="text-sm font-medium text-gray-600 block mb-1">Profissão:</label><input type="text" id="input_45" name="q45_profissao45" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                    <div class="lg:col-span-1"><label class="text-sm font-medium text-gray-600 block mb-2">Tipo de Documento:</label><div class="flex items-center space-x-4 pt-1"><span class="form-checkbox-item"><input id="q89_0" type="checkbox" class="form-checkbox" name="q89_tipoDe89[]" value="CPF"><label for="q89_0">CPF</label></span><span class="form-checkbox-item"><input id="q89_1" type="checkbox" class="form-checkbox" name="q89_tipoDe89[]" value="CI"><label for="q89_1">CI</label></span><span class="form-checkbox-item"><input id="q89_2" type="checkbox" class="form-checkbox" name="q89_tipoDe89[]" value="CNH"><label for="q89_2">CNH</label></span></div></div>
-                    <div class="lg:col-span-2"><label for="input_44" class="text-sm font-medium text-gray-600 block mb-1">Nº do Documento:</label><input type="text" id="input_44" name="q44_n44" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></div>
-                </div>
-            </div>
 
-            <div class="mb-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                <h3 class="text-lg font-bold text-gray-800 mb-6 uppercase tracking-wider border-b pb-2">6. Descrição do Fato e Materiais</h3>
-                <div class="space-y-4">
-                     <div>
-                        <label for="input_46" class="text-sm font-medium text-gray-600 block mb-1">Armas, Objetos e Materiais Apreendidos/Apresentados:</label>
-                        <textarea id="input_46" name="q46_armasObjetos" rows="4" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></textarea>
-                    </div>
-                     <div>
-                        <label for="input_47" class="text-sm font-medium text-gray-600 block mb-1">Histórico (Descrição Sumária):</label>
-                        <textarea id="input_47" name="q47_historicodescricao" rows="6" class="w-full p-3 border border-gray-300 bg-white rounded-lg"></textarea>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="mb-8 p-6 bg-gray-50 rounded-xl border border-gray-200">
-                <h3 class="text-lg font-bold text-gray-800 mb-6 uppercase tracking-wider border-b pb-2">7. Relator</h3>
-                <div class="grid md:grid-cols-3 gap-x-8 gap-y-4">
-                     <div>
-                        <label for="input_50" class="text-sm font-medium text-gray-600 block mb-1">Posto/Graduação:</label>
-                        <input type="text" id="input_50" name="q50_postoGraduacao" class="w-full p-3 border border-gray-300 bg-white rounded-lg">
-                    </div>
-                     <div>
-                        <label for="input_58" class="text-sm font-medium text-gray-600 block mb-1">Nome:</label>
-                        <input type="text" id="input_58" name="q58_nome58" class="w-full p-3 border border-gray-300 bg-white rounded-lg">
-                    </div>
-                     <div>
-                        <label for="input_51" class="text-sm font-medium text-gray-600 block mb-1">N° Matrícula:</label>
-                        <input type="text" id="input_51" name="q51_nMatricula" class="w-full p-3 border border-gray-300 bg-white rounded-lg">
-                    </div>
-                </div>
-            </div>
+                <!-- Right Column: Form & Contract -->
+                <div class="md:w-2/3 bg-white text-gray-800 rounded-xl shadow-2xl p-6 md:p-8">
+                    <form id="registrationForm" onsubmit="handleContractSubmit(event)">
+                        
+                        <!-- Step 1: Personal Data -->
+                        <h3 class="font-display text-xl font-bold mb-4 border-b pb-2">1. Dados do Aluno</h3>
+                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                            <div>
+                                <label class="block text-sm font-bold mb-1 text-gray-600">Nome Completo</label>
+                                <input type="text" id="fullName" required class="w-full bg-gray-100 border border-gray-300 rounded p-3 focus:outline-none focus:border-brand-red" placeholder="Seu nome">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-1 text-gray-600">CPF</label>
+                                <input type="text" required class="w-full bg-gray-100 border border-gray-300 rounded p-3 focus:outline-none focus:border-brand-red" placeholder="000.000.000-00">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-1 text-gray-600">E-mail</label>
+                                <input type="email" required class="w-full bg-gray-100 border border-gray-300 rounded p-3 focus:outline-none focus:border-brand-red" placeholder="seu@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold mb-1 text-gray-600">Telefone</label>
+                                <input type="tel" required class="w-full bg-gray-100 border border-gray-300 rounded p-3 focus:outline-none focus:border-brand-red" placeholder="(00) 00000-0000">
+                            </div>
+                        </div>
 
-            <div class="flex flex-col md:flex-row flex-wrap justify-center items-center gap-4 mt-10 border-t-2 border-gray-100 pt-8">
-                <button id="input_59" type="submit" class="w-full md:w-auto bg-blue-700 hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300 flex items-center justify-center gap-2">
-                    <i data-lucide="download" class="w-5 h-5"></i>
-                    <span>Baixar PDF</span>
-                </button>
-                <button id="enviar_whatsapp" type="button" class="w-full md:w-auto bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-green-300 flex items-center justify-center gap-2">
-                     <i data-lucide="send" class="w-5 h-5"></i>
-                    <span>Enviar Release - WhatsApp</span>
-                </button>
-                 <button id="botao_atualizar" type="button" class="w-full md:w-auto bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300 flex items-center justify-center gap-2">
-                    <i data-lucide="refresh-cw" class="w-5 h-5"></i>
-                    <span>Atualizar Página</span>
-                </button>
-                 <button id="input_reset_59" type="reset" class="w-full md:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-red-300 flex items-center justify-center gap-2">
-                    <i data-lucide="trash-2" class="w-5 h-5"></i>
-                    <span>Limpar</span>
-                </button>
+                        <!-- Step 2: Plan Selection (Hidden input, populated by JS) -->
+                        <input type="hidden" id="selectedPlanInput" name="plan" required>
+
+                        <!-- Step 3: Contract -->
+                        <h3 class="font-display text-xl font-bold mb-4 border-b pb-2 mt-8">2. Contrato de Prestação de Serviços</h3>
+                        
+                        <div class="bg-gray-50 border border-gray-300 rounded p-4 h-64 overflow-y-scroll mb-4 text-sm text-gray-600 contract-scroll text-justify">
+                            <p class="font-bold mb-2 text-center">CONTRATO DE ADESÃO E PRESTAÇÃO DE SERVIÇOS DE ENSINO ESPORTIVO</p>
+                            
+                            <p class="mb-2"><strong>CLÁUSULA 1ª - DO OBJETO:</strong> O presente contrato tem por objeto a prestação de serviços de ensino da arte marcial JIU-JITSU pela CONTRATADA ao CONTRATANTE.</p>
+
+                            <p class="mb-2"><strong>CLÁUSULA 2ª - DA SAÚDE:</strong> O aluno declara, neste ato, estar em perfeitas condições de saúde, isentando a academia de responsabilidades sobre problemas pré-existentes não informados.</p>
+
+                            <p class="mb-2"><strong>CLÁUSULA 3ª - DAS NORMAS:</strong> O aluno compromete-se a respeitar as regras do Dojô:
+                            <ul class="list-disc pl-5 mb-2">
+                                <li>Manter o Kimono limpo e unhas cortadas.</li>
+                                <li>Respeitar instrutores e colegas (Hierarquia).</li>
+                                <li>Não utilizar golpes proibidos pela IBJJF.</li>
+                            </ul>
+                            </p>
+
+                            <p class="mb-2"><strong>CLÁUSULA 4ª - DO PAGAMENTO:</strong> A mensalidade deverá ser paga até o dia 10 de cada mês. O atraso superior a 15 dias implicará no bloqueio de acesso à catraca.</p>
+
+                            <p class="mb-2"><strong>CLÁUSULA 5ª - DO CANCELAMENTO:</strong> O cancelamento deve ser solicitado com 30 dias de antecedência. Para planos anuais, aplica-se multa de 20% sobre o valor restante.</p>
+
+                            <p class="mb-2"><strong>CLÁUSULA 6ª - DIREITO DE IMAGEM:</strong> Autorizo o uso da minha imagem em materiais de divulgação da academia nas redes sociais.</p>
+
+                            <p class="mt-4 text-center italic">"O Jiu-Jitsu é a arte de ser suave com quem é suave, e duro com quem é duro."</p>
+                        </div>
+
+                        <!-- Step 4: Signature -->
+                        <div class="bg-gray-100 p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center mb-4">
+                                <input type="checkbox" id="termsCheck" required class="w-5 h-5 text-brand-red focus:ring-brand-red border-gray-300 rounded mr-2 cursor-pointer">
+                                <label for="termsCheck" class="text-sm font-semibold cursor-pointer select-none">Li e concordo com todos os termos do contrato acima.</label>
+                            </div>
+
+                            <div class="relative">
+                                <label class="block text-xs uppercase text-gray-500 mb-1">Assinatura Digital (Digite seu nome)</label>
+                                <input type="text" id="signatureInput" oninput="updateSignaturePreview(this.value)" class="w-full border-b-2 border-gray-400 bg-transparent p-2 focus:outline-none focus:border-brand-red transition font-display" placeholder="Digite para assinar...">
+                                <div id="signaturePreview" class="signature-font text-gray-400 absolute right-4 top-8 pointer-events-none opacity-50 text-2xl"></div>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="w-full mt-6 bg-brand-red text-white font-bold py-4 rounded text-lg uppercase tracking-wider hover:bg-red-700 transition shadow-lg flex justify-center items-center gap-2">
+                            <span>Confirmar Matrícula</span>
+                            <i class="fa-solid fa-file-pen"></i>
+                        </button>
+
+                    </form>
+                </div>
             </div>
-             <input type="hidden" class="simple_spc" id="simple_spc" name="simple_spc" value="252474593439064" />
-        </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white py-10 border-t border-gray-900">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="font-display text-2xl font-bold mb-4">TANQUE TEAM <span class="text-brand-red">BJJ</span></h2>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-red transition"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-red transition"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-brand-red transition"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+            <p class="text-gray-600 text-sm">&copy; 2024 Tanque Team BJJ Academy. Todos os direitos reservados. Oss.</p>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 z-[60] hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <!-- Background overlay -->
+            <div class="fixed inset-0 bg-gray-900 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closeModal()"></div>
+
+            <!-- Modal panel -->
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg w-full">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                    <div class="sm:flex sm:items-start">
+                        <div class="mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-green-100 sm:mx-0 sm:h-10 sm:w-10">
+                            <i class="fa-solid fa-check text-green-600"></i>
+                        </div>
+                        <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                            <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">Matrícula Pré-Aprovada!</h3>
+                            <div class="mt-2">
+                                <p class="text-sm text-gray-500">
+                                    Bem-vindo à família Tanque Team, <span id="modalClientName" class="font-bold"></span>!
+                                </p>
+                                <p class="text-sm text-gray-500 mt-2">
+                                    Seu contrato do plano <span id="modalPlanName" class="font-bold"></span> foi gerado. Enviamos uma cópia para o seu e-mail.
+                                </p>
+                                <div class="mt-4 bg-gray-50 p-3 rounded border border-dashed border-gray-300">
+                                    <p class="text-xs text-gray-400 uppercase">Próximo Passo:</p>
+                                    <p class="text-sm font-semibold text-brand-red">Compareça à recepção para retirar seu patch e agendar a primeira aula.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" onclick="closeModal()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-brand-red text-base font-medium text-white hover:bg-red-700 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm">
+                        Entendido, Oss!
+                    </button>
+                    <button type="button" onclick="window.print()" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        Imprimir Contrato
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <!-- JavaScript Logic -->
     <script>
-        // Inicializa a biblioteca de ícones Lucide
-        lucide.createIcons();
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
 
-        // Função para enviar os dados formatados para o WhatsApp
-        function enviarViaWhatsApp() {
-            const bo_n = document.getElementById('input_3')?.value || '';
-            const data_ocorrencia = document.getElementById('lite_mode_67')?.value || '';
-            const hora_fato = document.getElementById('input_55_timeInput')?.value || '';
-            const local = document.getElementById('input_5')?.value || '';
-            const bairro = document.getElementById('input_8')?.value || '';
-            const ponto_ref = document.getElementById('input_9')?.value || '';
-            const material_apreendido = document.getElementById('input_46')?.value || '';
-            const relatorio = document.getElementById('input_47')?.value || '';
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
 
-            let mensagem = `*POLÍCIA MILITAR DO MARANHÃO*\n`;
-            mensagem += `*CPI / CPAI-5 / 10º BPM*\n\n`;
-            mensagem += `*TÍTULO DA OCORRÊNCIA:*\n\n`;
-            mensagem += `*BO №:* ${bo_n}\n`;
-            mensagem += `*Data:* ${data_ocorrencia}\n`;
-            mensagem += `*Hora:* ${hora_fato}\n`;
-            const localCompleto = [local, bairro, ponto_ref].filter(Boolean).join(', ');
-            mensagem += `*Local:* ${localCompleto}\n`;
-            mensagem += `*Localização:*\n\n`;
-            mensagem += `*Procedimentos adotados:*\n\n`;
+        // Plan Selection Logic
+        function selectPlan(planName, price) {
+            // Update visual summary
+            const summaryDiv = document.getElementById('plan-summary');
+            const summaryName = document.getElementById('summary-name');
+            const summaryPrice = document.getElementById('summary-price');
+            const hiddenInput = document.getElementById('selectedPlanInput');
 
-            let envolvidos_texto = "";
+            summaryDiv.classList.remove('hidden');
+            summaryDiv.classList.add('fade-in');
             
-            // Função interna para processar cada envolvido e adicionar ao texto
-            function adicionarEnvolvido(num, nome_id, doc_id, end_id, envolvimento_name) {
-                const nome = document.getElementById(nome_id)?.value;
-                if (!nome) return ""; // Se não houver nome, pula este envolvido
+            summaryName.innerText = planName.toUpperCase();
+            summaryPrice.innerText = `R$ ${price},00`;
+            hiddenInput.value = planName;
 
-                const doc = document.getElementById(doc_id)?.value || 'Não informado';
-                const residencia = document.getElementById(end_id)?.value || 'Não informado';
-
-                let tipoEnvolvimento = "";
-                const checkboxes = document.querySelectorAll(`input[name="${envolvimento_name}"]:checked`);
-                
-                if (checkboxes && checkboxes.length > 0) {
-                    tipoEnvolvimento = checkboxes[0].value;
-                } else {
-                    return ""; 
-                }
-                
-                const validos = ["Vítima", "Conduzido", "Proprietário", "Outros"];
-                if (validos.includes(tipoEnvolvimento)) {
-                    return `*${tipoEnvolvimento.toUpperCase()}:*\nNome: ${nome}\nCPF/Doc: ${doc}\nEndereço: ${residencia}\n\n`;
-                }
-                return "";
-            }
-
-            // Coleta dados dos 4 envolvidos
-            envolvidos_texto += adicionarEnvolvido(1, 'input_11', 'input_17', 'input_13', 'q81_typeA[]');
-            envolvidos_texto += adicionarEnvolvido(2, 'input_20', 'input_26', 'input_22', 'q83_envolvimento83[]');
-            envolvidos_texto += adicionarEnvolvido(3, 'input_29', 'input_35', 'input_31', 'q84_envolvimento[]');
-            envolvidos_texto += adicionarEnvolvido(4, 'input_38', 'input_44', 'input_40', 'q85_envolvimento85[]');
-
-            mensagem += envolvidos_texto;
-            mensagem += `*Material Apreendido/apresentado:*\n${material_apreendido}\n\n`;
-            mensagem += `*Relatório:*\n${relatorio}\n\n`;
-            mensagem += `*Guarnição:*`;
-
-            const numero = "+5598985342874"; // Número de destino
-            const urlWhatsApp = `https://api.whatsapp.com/send?phone=${numero}&text=${encodeURIComponent(mensagem)}`;
-            window.open(urlWhatsApp, '_blank');
+            // Scroll to form smoothly
+            document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Atribui as funções aos botões
-        document.getElementById('enviar_whatsapp')?.addEventListener('click', enviarViaWhatsApp);
-        document.getElementById('botao_atualizar')?.addEventListener('click', () => location.reload());
-        
+        // Signature Simulation
+        function updateSignaturePreview(text) {
+            const preview = document.getElementById('signaturePreview');
+            preview.innerText = text;
+        }
+
+        // Form Handling
+        function handleContractSubmit(e) {
+            e.preventDefault();
+
+            // Check if plan is selected
+            const plan = document.getElementById('selectedPlanInput').value;
+            if(!plan) {
+                alert("Por favor, selecione um plano na seção acima antes de continuar.");
+                document.getElementById('plans').scrollIntoView({ behavior: 'smooth' });
+                return;
+            }
+
+            // Get user name
+            const name = document.getElementById('fullName').value;
+            
+            // Populate Modal
+            document.getElementById('modalClientName').innerText = name;
+            document.getElementById('modalPlanName').innerText = plan.toUpperCase();
+
+            // Show Modal
+            document.getElementById('successModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('successModal').classList.add('hidden');
+            // Optional: Reset form
+            document.getElementById('registrationForm').reset();
+            document.getElementById('plan-summary').classList.add('hidden');
+            document.getElementById('signaturePreview').innerText = '';
+        }
     </script>
 </body>
 </html>
